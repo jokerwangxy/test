@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>试卷</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <!-- &lt;!&ndash; 让360双核浏览器用webkit内核渲染页面 !!! 注意，这行最好放在前面，防止浏览器开始解析的时候采用其它内置的渲染方案  &ndash;&gt;-->
+    <meta name="renderer" content="webkit">
+    <!--   &lt;!&ndash; 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核 &ndash;&gt;-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- &lt;!&ndash; IOS6全屏 Chrome高版本全屏
+     ================================================== &ndash;&gt;-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script>
+        var contextRoot = 'http://localhost:8082/cscec';
+    </script>
+    <script src="http://123.56.139.1:9000/static/js/boot.js" type="text/javascript"></script>
+    <script src="http://123.56.139.1:9000/static/js/ciic.js" params="true"></script>
+    <link rel="stylesheet" href="http://123.56.139.1:9000/static/css/examin/examin.css">
+    <style>
+        .in_form {
+            max-width: 1120px;
+        }
+
+        .in_form in_form2 {
+            width: 83%;
+        }
+
+        .stuff img {
+            width: 150px;
+            height: 103px;
+            float: left;
+            margin: 0 20px 20px;
+            border: 1px solid #ececec;
+        }
+
+        .mini-radiobuttonlist-td, .mini-checkboxlist-td {
+            padding-bottom: 16px;
+        }
+    </style>
+    <!--重置css样式-->
+</head>
+<body pageid="/page/onlineExamination/examination">
+<div id="content">
+    <h1 class="align_center">焊工五级（初级工）考试</h1>
+    <div class="examin_top align_center">
+        <div class="pull_left">本张试卷共有试题：<span class="total">48</span> 已答题：<span class="answered">1</span> 剩余 <span
+                class="surplus">47</span></div>
+        <span>距离考试结束还剩：<span class="surplusTime">01:26:21</span> </span>
+        <div class="pull_right">
+            <a class="mini-button mini-button-primary" id="setNoBtn">结束考试</a>
+        </div>
+    </div>
+    <div class="over_hidden examin_middle">
+        <div class="pull_left"><span class="label">姓名：</span><span>Fiona</span></div>
+        <div class="pull_left"><span class="label">准考证号：</span><span>2281939008381291</span></div>
+        <div class="pull_left" style="margin-right: 0"><span class="label">员工单位：</span><span>中国建筑第四工程有限公司</span></div>
+    </div>
+    <div class="examin_content">
+        <table class="subject">
+            <tr>
+                <td>
+                    <div style="    white-space: nowrap;padding-right: 20px;font-weight: 600;font-size: 14px;color: #333;">
+                        单选题
+                    </div>
+                </td>
+                <td align="left" width="100%" id="radio">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="    white-space: nowrap;padding-right: 20px;font-weight: 600;font-size: 14px;color: #333;">
+                        多选题
+                    </div>
+                </td>
+                <td align="left" width="100%" id="check">
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="    white-space: nowrap;padding-right: 20px;font-weight: 600;font-size: 14px;color: #333;">
+                        判选题
+                    </div>
+                </td>
+                <td align="left" width="100%" id="judge">
+                </td>
+            </tr>
+        </table>
+        <div class="over_hidden introduce">
+            <div class="pull_right over_hidden">
+                <div class="pull_left">
+                    <span class="introduceItem active"></span>
+                    <span>以做答</span>
+                </div>
+                <div class="pull_left">
+                    <span class="introduceItem current"></span>
+                    <span>当前题目</span>
+                </div>
+                <div class="pull_left">
+                    <span class="introduceItem"></span>
+                    <span>未做答</span>
+                </div>
+            </div>
+        </div>
+        <div class="topic">
+            <h2 id="itemType">单选题（本题型共8小题，每小题2分，本题型共16分，每小题只有一个正确答案）</h2>
+            <div>
+                <h3 id="itemTitle">2. 《GB175-1999》、《GB1344-1999》、《GB12958-1999》 中的六类水泥强度单位是 。（1分）</h3>
+                <div id="itemContent">
+                    <div class="mini-radiobuttonlist" repeatItems="1" repeatLayout="table"
+                         textField="text" valueField="id"
+                         data="[{id:1,text:'A、Kg'},{id:2,text:'B、Kgf /m2'},{id:3,text:'C、MPa'}]">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="over_hidden" style="margin-top: 22px;">
+            <div class="pull_left">
+                <a class="mini-button mini-button-primary" onclick="prev()">上一页</a>
+            </div>
+            <div class="pull_right">
+                <a class="mini-button mini-button-primary" onclick="next()">下一页</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    document.oncontextmenu = function (event) {
+        if (window.event) {
+            event = window.event;
+        }
+        try {
+            var the = event.srcElement;
+            if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+                return false;
+            }
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+    document.onkeydown = function () {
+
+        if (window.event && window.event.keyCode == 123) {
+            alert("F12被禁用");
+            event.keyCode = 0;
+            event.returnValue = false;
+        }
+        if (window.event && window.event.keyCode == 13) {
+            window.event.keyCode = 505;
+        }
+        if (window.event && window.event.keyCode == 8) {
+            alert(str + "\n请使用Del键进行字符的删除操作！");
+            window.event.returnValue = false;
+        }
+
+    }
+    var datas = {
+        "questionMap": {
+            "check": [{
+                "options": [{
+                    "isTrue": "5013000001",
+                    "optionContent": "12345",
+                    "optionId": "8f35e35ed04945588cf21716ee6cf28b"
+                }, {"isTrue": "5013000001", "optionContent": "1234", "optionId": "abae42f550c947b0a13f4edc3f689950"}],
+                "questionContent": "1234",
+                "questionId": "3cbfa7b4381a45258dcbdfb2df908933",
+                "questionScore": "10",
+                "type": "5012000002"
+            }, {
+                "options": [{
+                    "isTrue": "5013000002",
+                    "optionContent": "面粉",
+                    "optionId": "4fd0b0fe417543038063936050fb52c2"
+                }, {
+                    "isTrue": "5013000001",
+                    "optionContent": "石灰",
+                    "optionId": "6ca99efc223644d7af63bc99c461476d"
+                }, {"isTrue": "5013000001", "optionContent": "沙子", "optionId": "89d25efe4b6f4a9485b6045515cd2b5a"}],
+                "questionContent": "水泥中的成分包含以下哪些？",
+                "questionId": "a396dfe75fdf4939905032e1be4a8a76",
+                "questionScore": "10",
+                "type": "5012000002"
+            }, {
+                "options": [{
+                    "isTrue": "5013000002",
+                    "optionContent": "矿渣",
+                    "optionId": "50299b0d14304f2c907bbc10c84d0f62"
+                }, {
+                    "isTrue": "5013000001",
+                    "optionContent": "黏土",
+                    "optionId": "72b40d37a40047e4bfe0fb86fb94a76b"
+                }, {
+                    "isTrue": "5013000001",
+                    "optionContent": "粉煤灰",
+                    "optionId": "c924ae2c32a44fbda327bd95ea92447c"
+                }, {"isTrue": "5013000001", "optionContent": "石灰石", "optionId": "f66665ef58a04741b0026df713ef56e5"}],
+                "questionContent": "既能作为生产熟料的原料，又能作掺入水泥中混合材料有（）",
+                "questionId": "55fa021b1d2c4757ba11f062d7027f66",
+                "questionScore": "10",
+                "type": "5012000002"
+            }, {
+                "options": [{
+                    "isTrue": "5013000001",
+                    "optionContent": "2个月",
+                    "optionId": "0e4820fbf011431684a9197235280c02"
+                }, {
+                    "isTrue": "5013000002",
+                    "optionContent": "4个月",
+                    "optionId": "a2784248c12146e7bb5c26b32741262f"
+                }, {
+                    "isTrue": "5013000001",
+                    "optionContent": "3个月以内",
+                    "optionId": "a40abf1aaab94ac595f7fb78b5205761"
+                }, {"isTrue": "5013000001", "optionContent": "2到3个月", "optionId": "f460011aea9b4dd2ab4d81f90c84464f"}],
+                "questionContent": "袋装水泥的存放出期为",
+                "questionId": "770012c633b640cea16bdc7edfb0d496",
+                "questionScore": "10",
+                "type": "5012000002"
+            }],
+            "judge": [{
+                "options": [{"optionContent": "正确", "optionId": "5013000001"}, {
+                    "optionContent": "错误",
+                    "optionId": "5013000002"
+                }],
+                "questionContent": "1234",
+                "questionId": "af55b0525acc4e448252b37b47eca044",
+                "questionScore": "10",
+                "type": "5012000003"
+            }, {
+                "options": [{"optionContent": "正确", "optionId": "5013000001"}, {
+                    "optionContent": "错误",
+                    "optionId": "5013000002"
+                }],
+                "questionContent": "水泥是由中国人发明的",
+                "questionId": "8f3afa180bd74ebc8bb485043d080fd6",
+                "questionScore": "10",
+                "type": "5012000003"
+            }, {
+                "options": [{"optionContent": "正确", "optionId": "5013000001"}, {
+                    "optionContent": "错误",
+                    "optionId": "5013000002"
+                }],
+                "questionContent": "急冷对提高熟料质量有好处，所以应延长熟料在冷却带的时间。",
+                "questionId": "8ee3687c22664fdfa0700e6629d562c0",
+                "questionScore": "10",
+                "type": "5012000003"
+            }, {
+                "options": [{"optionContent": "正确", "optionId": "5013000001"}, {
+                    "optionContent": "错误",
+                    "optionId": "5013000002"
+                }],
+                "questionContent": "1234",
+                "questionId": "d17e27f17153455b8d267fe139e05710",
+                "questionScore": "10",
+                "type": "5012000003"
+            }],
+            "radio": [{
+                "options": [{
+                    "isTrue": "5013000001",
+                    "optionContent": "1234",
+                    "optionId": "3f8ac55d45604ab3a534a5be4f81e793"
+                }],
+                "questionContent": "1234",
+                "questionId": "439984025fc3441e8a91e7f164e94612",
+                "questionScore": "5",
+                "type": "5012000001"
+            }, {
+                "options": [{
+                    "isTrue": "5013000002",
+                    "optionContent": "混合少量石头的水泥",
+                    "optionId": "488001ef584f4b4fa5cb4134457217f3"
+                }, {
+                    "isTrue": "5013000001",
+                    "optionContent": "混合大量石头的水泥",
+                    "optionId": "818bb4684b3f4883917f7ea572706f72"
+                }, {"isTrue": "5013000002", "optionContent": "纯水泥", "optionId": "aa53523043cc4e81906c2ed8869ef425"}],
+                "questionContent": "以下哪种水泥适合铺路？",
+                "questionId": "6c166c4b567e4a9f93f86fc3baf3fbb8",
+                "questionScore": "5",
+                "type": "5012000001"
+            }, {
+                "options": [{
+                    "isTrue": "5013000002",
+                    "optionContent": "牛",
+                    "optionId": "093ba3cda3474fbc8baacf9fa909640d"
+                }, {
+                    "isTrue": "5013000001",
+                    "optionContent": "兆帕",
+                    "optionId": "6f2710299aff4d07bafb579f4dbaa6cc"
+                }, {"isTrue": "5013000002", "optionContent": "千帕", "optionId": "e8ab9402afe84d6080ded3f73b509b7b"}],
+                "questionContent": "水泥的强度单位是",
+                "questionId": "323b719bebca470585e06dbb8b7f8f07",
+                "questionScore": "5",
+                "type": "5012000001"
+            }, {
+                "options": [{
+                    "isTrue": "5013000002",
+                    "optionContent": "250°",
+                    "optionId": "4b081ab8c10c42c1ab17e5aba8811352"
+                }, {
+                    "isTrue": "5013000001",
+                    "optionContent": "200°",
+                    "optionId": "9f6b521db8ee40e2ad7f9d42919d530b"
+                }, {"isTrue": "5013000002", "optionContent": "100°", "optionId": "b2c68e8128a6433ea5430885527b8a16"}],
+                "questionContent": "水泥最高可承受的温度为（）",
+                "questionId": "3326e9942e1e484aa549e85896d57484",
+                "questionScore": "5",
+                "type": "5012000001"
+            }]
+        }
+    };
+
+    var currentItem = 0;
+
+    var radioLength = datas.questionMap.radio.length;
+    var checkLength = datas.questionMap.check.length;
+    var judgeLength = datas.questionMap.judge.length;
+    $(datas.questionMap.radio).each(function (i, item) {
+        if (i == 0) {
+            $('#radio').append('<span class="subjectItem currentItem' + (' radio' + i) + '" attr="' + i + '">' + (i + 1) + '</span>');
+        } else {
+            $('#radio').append('<span class="subjectItem' + (' radio' + i) + '" attr="' + i + '">' + (i + 1) + '</span>');
+        }
+    })
+    $(datas.questionMap.check).each(function (i, item) {
+        $('#check').append('<span class="subjectItem' + (' check' + (i + radioLength)) + '" attr="' + (i + radioLength) + '">' + (i + 1 + radioLength) + '</span>');
+    })
+    $(datas.questionMap.judge).each(function (i, item) {
+        $('#judge').append('<span class="subjectItem' + (' judge' + (i + radioLength + checkLength)) + '" attr="' + (i + radioLength + checkLength) + '">' + (i + 1 + radioLength + checkLength) + '</span>');
+    });
+    getCurrentItem();
+
+    function getCurrentItem() {
+        var data;
+        var html;
+        var index;
+        $('.currentItem').removeClass('currentItem');
+        if (currentItem <= radioLength - 1) { //单选题
+            $('#itemType').text('单选题（本题型共8小题，每小题2分，本题型共16分，每小题只有一个正确答案）')
+            data = datas.questionMap.radio[currentItem];
+            index = currentItem;
+            html = '<div id="item' + currentItem + '"  class="mini-radiobuttonlist" repeatItems="1" repeatLayout="table" textField="optionContent" valueField="optionId" onvaluechanged="valueChange" ></div>';
+            $('.radio' + currentItem).addClass('currentItem');
+            // mini.parse();
+        } else if (currentItem - radioLength <= checkLength - 1) { //多选题
+            $('#itemType').text('多选题（本题型共8小题，每小题2分，本题型共16分，每小题有多个正确答案）');
+            data = datas.questionMap.check[currentItem - radioLength];
+            index = currentItem - radioLength;
+            html = '<div id="item' + (index) + '"  class="mini-checkboxlist" repeatItems="1" repeatLayout="table" textField="optionContent" valueField="optionId"  onvaluechanged="valueChange1" ></div>';
+            $('.check' + currentItem).addClass('currentItem');
+        } else { //判断题
+            $('#itemType').text('判断题（本题型共8小题，每小题2分，本题型共16分，每小题只有一个正确答案）');
+            data = datas.questionMap.judge[currentItem - radioLength - checkLength];
+            index = currentItem - radioLength - checkLength;
+            html = '<div id="item' + (index) + '"  class="mini-radiobuttonlist" repeatItems="1" repeatLayout="table" textField="optionContent" valueField="optionId"  onvaluechanged="valueChange2"  ></div>';
+            $('.judge' + currentItem).addClass('currentItem');
+
+        }
+        $('#itemTitle').text((currentItem + 1) + '、' + data.questionContent + '（' + data.questionScore + '分）');
+        $('#itemContent').html(html);
+        ciic.parse();
+        ciic.get('item' + index).setData(data.options);
+        if (data.value) {
+            ciic.get('item' + index).setValue(data.value);
+        }
+    }
+
+    function valueChange(e) {
+        var val;
+        var id;
+        if (e.value) {
+            val = e.value;
+            id = parseInt(e.sender.id.slice(4, e.sender.id.length));
+            datas.questionMap.radio[id].value = val;
+            $('.radio' + id).addClass('answeredItem')
+        }
+
+    }
+
+    function valueChange1(e) {
+        var val;
+        var id;
+        if (e.value) {
+            val = e.value;
+            id = parseInt(e.sender.id.slice(4, e.sender.id.length));
+            datas.questionMap.check[id].value = val;
+            $('.check' + (id + radioLength)).addClass('answeredItem')
+        }
+
+    }
+
+    function valueChange2(e) {
+        var val;
+        var id;
+        if (e.value) {
+            val = e.value;
+            id = parseInt(e.sender.id.slice(4, e.sender.id.length));
+            datas.questionMap.judge[id].value = val;
+            $('.judge' + (id + radioLength + checkLength)).addClass('answeredItem')
+        }
+
+    }
+
+    function prev() {
+        currentItem--;
+        if (currentItem >= 0) {
+            getCurrentItem();
+        } else {
+            currentItem = 0
+        }
+    }
+
+    $(function () {
+        $('.subjectItem').click(function () {
+            currentItem = parseInt($(this).attr('attr'));
+            getCurrentItem();
+        })
+    });
+
+    function next() {
+        currentItem++;
+        if (currentItem - radioLength - checkLength - judgeLength < 0) {
+            getCurrentItem();
+        } else {
+            currentItem = radioLength + checkLength + judgeLength - 1;
+        }
+
+    }
+
+    $("#setNoBtn").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: contextRoot + "/mvc/sysTask/testHello",
+            data: null,
+            success: function (data) {
+                alert(data);
+            }
+        })
+    })
+
+</script>
+</html>
